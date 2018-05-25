@@ -1,0 +1,55 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>  
+ 
+    <style>
+    	body{
+    		margin: 0 auto;
+    		background-color: burlywood;
+    	}
+    	#vue-todolist{
+    		width:320px ;
+    		margin: 30px auto;
+    		background-color: rosybrown;
+    		
+    	}
+    	h1{
+    		color: darkslategrey;
+    		text-align: center;
+    	}
+    	hr{
+    		color: gray;
+    		font-size: 3px;
+    	}
+    	ul{
+    		list-style-type: circle;
+    	}
+    </style>
+</head>  
+<body>
+<!-- todolist -->
+	<div id="vue-todolist" class="todolistDiv">
+	<h1> todolist</h1>
+	<hr>
+		<input class="ipt" type="text" v-model="inputVaule" v-on:keyup.enter="add"/>
+		<button v-on:click="add" class="btn">add</button>
+		<ul >
+			<li v-for="item in items" >
+			<div class="liDiv">
+				<input type="checkbox" v-model="item.completed">
+				<label  v-bind:class="{ complete:item.completed }">{{item.text}}</label>
+				<button v-on:click="removeTodo(item)" class="btn">x</button></li>
+			</div>
+		</ul>
+		
+	</div>
+	<!-- vue -->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="vue_files/vuetest.js"></script>
+
+</body>
+</html>
